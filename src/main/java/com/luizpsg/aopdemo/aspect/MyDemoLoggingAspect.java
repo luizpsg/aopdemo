@@ -86,11 +86,46 @@ public class MyDemoLoggingAspect {
   private void forDaoPackage() {
   }
 
-  @Before("forDaoPackage()")
-  public void beforeAddAccountAdviceWithPointcut() {
+  // create pointcut for getter methods
+  @Pointcut("execution(* com.luizpsg.aopdemo.dao.*.get*(..))")
+  private void getter() {
+  }
+
+  // create pointcut for setter methods
+  @Pointcut("execution(* com.luizpsg.aopdemo.dao.*.set*(..))")
+  private void setter() {
+  }
+
+  // combine pointcut: include package ... exclude getter/setter
+  @Pointcut("forDaoPackage() && !(getter() || setter())")
+  private void forDaoPackageNoGetterSetter() {
+  }
+
+  // @Before("forDaoPackage()")
+  // public void beforeAddAccountAdviceWithPointcut() {
+  // System.out.println(
+  // "\n=====>>> Executing @Before advice on any return type of package dao on any
+  // class and any method(ANY number of params, and any params type)
+  // withpointcut");
+  // // all of this togheter will allow us to match any method in any class in the
+  // // given package
+  // }
+
+  // @Before("forDaoPackage()")
+  // public void performApiAnalytics() {
+  // System.out.println("\n=====>>> Performing API analytics");
+  // }
+
+  @Before("forDaoPackageNoGetterSetter()")
+  public void beforeAddAccountAdvice() {
     System.out.println(
-        "\n=====>>> Executing @Before advice on any return type of package dao on any class and any method(ANY number of params, and any params type) with pointcut");
+        "\n=====>>> Executing @Before advice on any return type of package dao on any class and any method(ANY number of params, and any params type) with pointcut and excluding getter and setter");
     // all of this togheter will allow us to match any method in any class in the
     // given package
+  }
+
+  @Before("forDaoPackageNoGetterSetter()")
+  public void performApiAnalytics() {
+    System.out.println("\n=====>>> Performing API analytics");
   }
 }

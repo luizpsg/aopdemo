@@ -28,11 +28,20 @@ public class AopdemoApplication {
     // create an account
     Account myAccount = new Account();
     myAccount.setName("Luiz Paulo");
-    myAccount.setLevel("Silver");
+    myAccount.setLevel("Infinity");
 
     // call the Account business methods
     theAccountDAO.addAccount(myAccount, true);
     theAccountDAO.doWork();
+
+    // call the accountdao getter/setter methods
+    theAccountDAO.setName("foobar");
+    theAccountDAO.setServiceCode("silver");
+
+    String name = theAccountDAO.getName();
+    String code = theAccountDAO.getServiceCode();
+
+    System.out.println("Name: " + name + " Code: " + code);
 
     // call the Membership business methods
     MembershipDAO.addMember();
