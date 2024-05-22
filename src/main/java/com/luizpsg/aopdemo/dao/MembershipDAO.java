@@ -1,5 +1,7 @@
 package com.luizpsg.aopdemo.dao;
 
 public interface MembershipDAO {
-  void addMember();
+  boolean addMember();
+
+  void goToSleep();
 }
