@@ -12,11 +12,6 @@ public class MyDemoLoggingAspect {
 
   // lets start with an @Before advice
 
-  // @Before("execution(* add*())")
-  // public void beforeAddAccountAdvice() {
-  // System.out.println("\n=====>>> Executing @Before advice on addAccount()");
-  // }
-
   // @Before("execution(* addAccount())")
   // public void beforeAddAccountAdvice() {
   // System.out.println("\n=====>>> Executing @Before advice on addAccount()");
@@ -28,9 +23,14 @@ public class MyDemoLoggingAspect {
   // System.out.println("\n=====>>> Executing @Before advice on addAccount()");
   // }
 
-  @Before("execution(public void add*())")
+  // @Before("execution(public void addAccount())")
+  // public void beforeAddAccountAdvice() {
+  // System.out.println("\n=====>>> Executing @Before advice on addAccount()");
+  // }
+
+  @Before("execution(* add*())")
   public void beforeAddAccountAdvice() {
-    System.out.println("\n=====>>> Executing @Before advice on addAccount()");
+    System.out.println("\n=====>>> Executing @Before advice on add***()");
   }
 
 }
