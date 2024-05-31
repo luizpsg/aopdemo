@@ -1,5 +1,8 @@
 package com.luizpsg.aopdemo.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.luizpsg.aopdemo.Account;
@@ -39,5 +42,16 @@ public class AccountDAOImpl implements AccountDAO {
   public void setServiceCode(String serviceCode) {
     System.out.println(getClass() + ": in setServiceCode()");
     this.serviceCode = serviceCode;
+  }
+
+  @Override
+  public List<Account> findAccounts() {
+    List<Account> myAccounts = new ArrayList<>();
+
+    myAccounts.add(new Account("John", "Silver"));
+    myAccounts.add(new Account("Madeline", "Platinum"));
+    myAccounts.add(new Account("Luiz", "Gold"));
+
+    return myAccounts;
   }
 }

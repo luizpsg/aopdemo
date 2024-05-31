@@ -1,8 +1,13 @@
 package com.luizpsg.aopdemo.dao;
 
+import java.util.List;
+
 import com.luizpsg.aopdemo.Account;
 
 public interface AccountDAO {
+
+  List<Account> findAccounts();
+
   void addAccount(Account theAccount, boolean vipFlag);
 
   boolean doWork();
