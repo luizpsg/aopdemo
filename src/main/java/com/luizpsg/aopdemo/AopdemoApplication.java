@@ -1,5 +1,7 @@
 package com.luizpsg.aopdemo;
 
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,8 +21,24 @@ public class AopdemoApplication {
   public CommandLineRunner commandLineRunner(AccountDAO theAccountDAO, MembershipDAO theMembershipDAO) {
     return runner -> {
 
-      demoTheBeforeAdvice(theAccountDAO, theMembershipDAO);
+      // demoTheBeforeAdvice(theAccountDAO, theMembershipDAO);
+
+      demoTheAfterReturningAdvice(theAccountDAO);
+
+      System.out.println("\n");
     };
+  }
+
+  private void demoTheAfterReturningAdvice(AccountDAO theAccountDAO) {
+
+    // call method to fint the accounts
+    List<Account> theAccounts = theAccountDAO.findAccounts();
+
+    // display the accounts
+    System.out.println("\n\nMain Program: AfterReturningDemoApp");
+    System.out.println("----");
+    System.out.println(theAccounts);
+
   }
 
   private void demoTheBeforeAdvice(AccountDAO theAccountDAO, MembershipDAO MembershipDAO) {
