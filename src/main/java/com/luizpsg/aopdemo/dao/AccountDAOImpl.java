@@ -54,4 +54,13 @@ public class AccountDAOImpl implements AccountDAO {
 
     return myAccounts;
   }
+
+  @Override
+  public List<Account> findAccounts(boolean tripWire) {
+    if (tripWire) {
+      throw new RuntimeException("No soup for you!!!");
+    }
+
+    return findAccounts();
+  }
 }
